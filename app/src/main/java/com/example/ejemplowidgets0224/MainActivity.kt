@@ -27,15 +27,14 @@ class MainActivity : AppCompatActivity() {
                 changeTeamFlag("manchester")
         }
         // conectar la lista con el arreglo de datos usando un adaptador
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, teamNames )
+        val adapter = TeamsListAdapter(this, R.layout.list_teams, teamNames )
         binding.teamsList.adapter = adapter
         binding.teamsList.setOnItemClickListener { list, view, position, id -> // lambda
             println( "list: $list \n" +
                     "view: $view \n" +
                     "position: $position \n" +
                     "id: $id")
-            val tv = view as TextView
-            changeTeamFlag(tv.text.toString().lowercase())
+            changeTeamFlag(teamNames[position].lowercase())
         }
     }
 
