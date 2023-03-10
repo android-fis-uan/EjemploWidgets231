@@ -12,7 +12,10 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding:ActivityMainBinding
     lateinit var adapter:TeamsListAdapter
-    val teamNames = arrayListOf<String>("Liverpool","Manchester")
+    val teamNames = arrayListOf(
+        TeamInfo("Liverpool",R.drawable.liverpool, "United Kingdom", "1892"),
+        TeamInfo("Manchester",R.drawable.manchester, "United Kingdom", "1880")
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,14 +42,14 @@ class MainActivity : AppCompatActivity() {
                     "position: $position \n" +
                     "id: $id")
             //changeTeamFlag(teamNames[position].lowercase())
-            openTeamInfoActivity(teamNames[position])
+            openTeamInfoActivity(teamNames[position].name)
         }
     }
 
     fun changeTeamFlag(teamName:String) {
         val id = resources.getIdentifier(teamName, "drawable", packageName) // R.drawable.teanName
         binding.imgTeamShield.setImageResource(id)
-        teamNames.add("Otro equipo")
+        teamNames.add(TeamInfo("Otro equipo", 0, "No definido", "0000"))
         adapter.notifyDataSetChanged()
     }
 
