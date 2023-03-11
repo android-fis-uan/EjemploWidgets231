@@ -13,8 +13,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding:ActivityMainBinding
     lateinit var adapter:TeamsListAdapter
     val teamNames = arrayListOf(
-        TeamInfo("Liverpool",R.drawable.liverpool, "United Kingdom", "1892"),
-        TeamInfo("Manchester",R.drawable.manchester, "United Kingdom", "1880")
+        TeamInfo("Liverpool F.C.",R.drawable.liverpool, "United Kingdom", "1892", "http://www.liverpoolfc.com/", "geo:53.4308326,-2.9630187?z=17"),
+        TeamInfo("Manchester City F.C.",R.drawable.manchester, "United Kingdom", "1880", "http://www.mancity.com/","geo:53.4831413,-2.202584?z=17")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     fun changeTeamFlag(teamName:String) {
         val id = resources.getIdentifier(teamName, "drawable", packageName) // R.drawable.teanName
         binding.imgTeamShield.setImageResource(id)
-        teamNames.add(TeamInfo("Otro equipo", 0, "No definido", "0000"))
+        teamNames.add(TeamInfo("Otro equipo", 0, "No definido", "0000", "http://google.com"))
         adapter.notifyDataSetChanged()
     }
 
