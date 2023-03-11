@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                     "position: $position \n" +
                     "id: $id")
             //changeTeamFlag(teamNames[position].lowercase())
-            openTeamInfoActivity(teamNames[position].name)
+            openTeamInfoActivity(teamNames[position])
         }
     }
 
@@ -53,9 +53,9 @@ class MainActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
     }
 
-    fun openTeamInfoActivity(teamName: String) {
+    fun openTeamInfoActivity(team: TeamInfo) {
         val teamInfoIntent = Intent( this, InfoEquipoActivity::class.java)
-        teamInfoIntent.putExtra("TEAM_NAME", teamName)
+        teamInfoIntent.putExtra("TEAM_DATA", team)
         startActivity(teamInfoIntent)
     }
 }
